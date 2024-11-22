@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import type { FormProps } from 'antd';
 import { Button, Card, Checkbox, Form, Input } from 'antd';
 import { defineMessages, FormattedDate, FormattedMessage, FormattedNumber, useIntl } from 'react-intl';
+import getMessage from './getMessage';
 
 type FieldType = {
   username?: string;
@@ -41,7 +42,12 @@ const messsages = defineMessages({
 
 const App: React.FC = () => {
   const intl = useIntl();
-
+  useEffect(() => {
+    setTimeout(() => {
+      alert(getMessage());
+    }, 2000)
+  }, [])
+  
   return <Form
     name="basic"
     labelCol={{ span: 8 }}
