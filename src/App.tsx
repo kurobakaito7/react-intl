@@ -18,25 +18,31 @@ const onFinishFailed: FormProps<FieldType>['onFinishFailed'] = (errorInfo) => {
   console.log('Failed:', errorInfo);
 };
 
+// formatjs/cli 工具需要所有 Message 都有默认值
 const messsages = defineMessages({
   username: {
     id: "username",
     defaultMessage: '用户名'
   },
   password: {
-    id: "password"
+    id: "password",
+    defaultMessage: '密码'
   },
   rememberMe: {
-    id: 'rememberMe'
+    id: 'rememberMe',
+    defaultMessage: '记住我'
   },
   submit: {
-    id: 'submit'
+    id: 'submit',
+    defaultMessage: '提交'
   },
   inputYourUsername: {
-    id: 'inputYourUsername'
+    id: 'inputYourUsername',
+    defaultMessage: '请输入用户名！'
   },
   inputYourPassword: {
-    id: 'inputYourPassword'
+    id: 'inputYourPassword',
+    defaultMessage: '请输入密码！'
   }
 })
 
@@ -47,7 +53,7 @@ const App: React.FC = () => {
       alert(getMessage());
     }, 2000)
   }, [])
-  
+
   return <Form
     name="basic"
     labelCol={{ span: 8 }}
