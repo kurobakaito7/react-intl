@@ -1,7 +1,7 @@
 import React from 'react';
 import type { FormProps } from 'antd';
-import { Button, Checkbox, Form, Input } from 'antd';
-import { defineMessages, useIntl } from 'react-intl';
+import { Button, Card, Checkbox, Form, Input } from 'antd';
+import { defineMessages, FormattedDate, FormattedMessage, FormattedNumber, useIntl } from 'react-intl';
 
 type FieldType = {
   username?: string;
@@ -81,6 +81,38 @@ const App: React.FC = () => {
         {intl.formatMessage(messsages.submit)}
       </Button>
     </Form.Item>
+    <div style={{ display: 'flex' }}>
+      <Card title="日期" style={{ width: 300 }}>
+        <div>{intl.formatDate(new Date(), { weekday: 'long' })}</div>
+        <div>{intl.formatDate(new Date(), { weekday: 'short' })}</div>
+        <div>{intl.formatDate(new Date(), { weekday: 'narrow' })}</div>
+        <div>{intl.formatDate(new Date(), { dateStyle: 'full' })}</div>
+        <div>{intl.formatDate(new Date(), { dateStyle: 'long' })}</div>
+      </Card>
+      <Card title="相对时间" style={{ width: 300 }}>
+        <div>{intl.formatRelativeTime(200, 'hour')}</div>
+        <div>{intl.formatRelativeTime(-10, 'minute')}</div>
+      </Card>
+      <Card title="数字" style={{ width: 300 }}>
+        <div>{intl.formatNumber(200000, {
+          style: 'currency',
+          currency: intl.locale.includes('en') ? 'USD' : 'CNY'
+        })}</div>
+        <div>
+          {
+            intl.formatNumber(10000, {
+              style: 'unit',
+              unit: 'meter'
+            })
+          }
+        </div>
+      </Card>
+      <Card title="组件版本" style={{ width: 300 }}>
+        <div><FormattedDate value={new Date} dateStyle='full'></FormattedDate></div>
+        <div><FormattedMessage id={messsages.rememberMe.id}></FormattedMessage></div>
+        <div><FormattedNumber style='unit' unit='meter' value={2000}></FormattedNumber></div>
+      </Card>
+    </div>
   </Form>
 }
 

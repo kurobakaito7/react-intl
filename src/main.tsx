@@ -10,7 +10,8 @@ const message: Record<string, any> = {
 }
 
 // const locale = navigator.language;
-const locale = 'en-US'
+// const locale = 'en-US'
+const locale = 'zh-CN'
 
 createRoot(document.getElementById('root')!).render(
   <IntlProvider messages={message[locale]} locale={locale} defaultLocale='zh_CN'>
